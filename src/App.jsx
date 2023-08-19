@@ -1,33 +1,47 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react';
+import svgTest from './assets/Lucky.svg'
 import './App.css'
+
+import gsap from 'gsap';
 
 function App() {
   const [count, setCount] = useState(0)
 
+  useEffect(()=>{
+        // Use GSAP to create animations
+        gsap.to(".path", {
+          duration: 1,
+          x: 100,
+          opacity: 0.5,
+          ease: 'power2.out',
+        });
+  },[]);
+
+
+
+
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
+
+      <header>
+        <nav>
+        <p>about</p>
+        <p>projects</p>
+        <p>content</p>
+        <img className="path" src={svgTest}></img>
+        
+        </nav>
+      </header>
+        <h1>Arshaaq Jiffry</h1>
+
+      
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

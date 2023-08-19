@@ -1,0 +1,29 @@
+@import "./variables";
+@import "./base";
+
+*{
+  font-family: $main-font;
+  text-rendering: optimizeLegibility;
+}
+
+
+body{
+  font-family: $main-font;
+ 
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 5000;
+  }
+}
+
+.path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+  animation: dash 5s linear;
+  width: 500px;
+  height: 500px;
+  animation: dash 5s linear forwards;
+}
+
