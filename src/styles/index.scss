@@ -1,5 +1,6 @@
 @import "./variables";
 @import "./base";
+@import "./projects";
 
 *{
   font-family: $main-font;
@@ -12,18 +13,16 @@ body{
  
 }
 
-@keyframes dash {
-  to {
-    stroke-dashoffset: 5000;
-  }
-}
+.back-link{
 
-.path {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 0;
-  animation: dash 5s linear;
-  width: 500px;
-  height: 500px;
-  animation: dash 5s linear forwards;
+position: relative;
+top: 0px;
+left: 10px;
+
+font-size: 50px;
+text-decoration: none;
+
+
+background-color: red;
 }
 

@@ -1,4 +1,4 @@
-import './Home.css'
+import './styles/index.css'
 
 
 import { useRef, useState } from 'react'
