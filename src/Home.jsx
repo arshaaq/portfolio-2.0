@@ -1,7 +1,8 @@
 import './styles/index.css'
 
-
-import { useRef, useState } from 'react'
+import { useLoader } from '@react-three/fiber'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { useRef, useState, Suspense } from 'react'
 import { useEffect } from 'react';
 import {Canvas, useFrame} from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
@@ -39,48 +40,50 @@ function Threefibre(){
 };
 
 
+
 function Home() {
   const [count, setCount] = useState(0)
+  const gltf = useLoader(GLTFLoader, './3D_Models/scene.gltf');
 
   return (
     <>
 
 
     <Canvas>
-    <directionalLight
-          castShadow
-          position={[0, 10, 0]}
-          intensity={1.5}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          shadow-camera-far={50}
-          shadow-camera-left={-10}
-          shadow-camera-right={10}
-          shadow-camera-top={10}
-          shadow-camera-bottom={-10}
-        />
+      <Suspense>
+        <primitive 
+        scale={[0.25, 0.25, 0.25]} 
+        object={gltf.scene} />
+        <pointLight color="#f6f3ea" position={[10, 5, 10]} intensity={2} />
+      </Suspense>
+      <directionalLight/>
       <ambientLight intensity={1}/>
       <pointLight position={[10, 10, 10]} intensity={3}/>
-      <Threefibre />
+      {/* <Threefibre /> */}
     </Canvas>
       
      
 
       <header>
-        <nav>
+        <nav className='home-navigation'>
         <p><a href='./about'>about</a></p>
         <p><a href='./projects'>projects</a></p>
         <p><a href='./contact'>contact</a></p>  
         </nav>
       </header>
 
-        <h1>Arshaaq Jiffry</h1>
+      <section className='home-content'>
+      <h1>Arshaaq Jiffry</h1>
+
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>
 
         </p> 
+
+      </section>
+
     </>
   )
 }
