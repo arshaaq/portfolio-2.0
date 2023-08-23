@@ -18,7 +18,7 @@ import NavLink from './components/NavLink';
 function Threefibre(){
 
   const cubeRef = useRef();
-
+  const [active, setActive] = useState(false);
 
   // //for animation
   useFrame(()=>{
@@ -31,10 +31,14 @@ function Threefibre(){
   });
 
   return (
-    <mesh ref={cubeRef}>
-      <PerspectiveCamera />
-      <boxGeometry attach='geometry' args={[3,3,3]}/>
-      <meshStandardMaterial attach='material' color="lightblue" />
+    <mesh 
+      ref={cubeRef}
+      onClick={()=> setActive(!active)}  
+    >
+    
+    <PerspectiveCamera />
+    <boxGeometry args={[1.5,1.5,1.5]}/>
+    <meshPhongMaterial color={active ? "purple" : "blue"} />
     </mesh>
   );
 };
@@ -50,16 +54,21 @@ function Home() {
 
 
     <Canvas>
-      <Suspense>
+      <directionalLight/>
+      <ambientLight intensity={0.5}/>
+      <pointLight position={[10, 10, 10]} intensity={3}/>
+      <Threefibre />
+
+      {/* <Suspense>
         <primitive 
+        position={[1,0,3]}
+        onClick={(e)=> console.log('click')}
         scale={[0.25, 0.25, 0.25]} 
         object={gltf.scene} />
         <pointLight color="#f6f3ea" position={[10, 5, 10]} intensity={2} />
-      </Suspense>
-      <directionalLight/>
-      <ambientLight intensity={1}/>
-      <pointLight position={[10, 10, 10]} intensity={3}/>
-      {/* <Threefibre /> */}
+      </Suspense> */}
+
+      
     </Canvas>
       
      

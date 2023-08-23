@@ -103,4 +103,8 @@ body {
   font-size: 50px;
   text-decoration: none;
   background-color: red;
+}
+
+canvas {
+  height: 300px;
 }/*# sourceMappingURL=index.css.map */
