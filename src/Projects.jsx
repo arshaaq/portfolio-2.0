@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import ProjectItem from "./components/ProjectItem";
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const tl = gsap.timeline();
 
@@ -24,7 +25,7 @@ function Projects(){
 
 return(
   <>
-    <a href="/" className="back-link">Back</a>
+    <p><Link to="/" className="back-link">Back</Link></p>
     <div className="project-container">
       <ProjectItem/>
       <ProjectItem/>
