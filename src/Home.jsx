@@ -76,9 +76,9 @@ function Home() {
 
       <header>
         <nav className='home-navigation'>
-        <p><a href='/portfolio-2.0/about'>about</a></p>
-        <p><a href='/portfolio-2.0/projects'>projects</a></p>
-        <p><a href='/portfolio-2.0/contact'>contact</a></p>  
+        <p><a href='/about'>about</a></p>
+        <p><a href='/projects'>projects</a></p>
+        <p><a href='/contact'>contact</a></p>  
         </nav>
       </header>
 
