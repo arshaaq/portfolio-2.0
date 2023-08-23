@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.80.3",
     "gsap": "^3.12.2",
     "localforage": "^1.10.0",

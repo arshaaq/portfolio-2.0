@@ -1,10 +1,11 @@
 import './styles/index.css'
 
-import { useLoader } from '@react-three/fiber'
+
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { useRef, useState, Suspense } from 'react'
-import { useEffect } from 'react';
-import {Canvas, useFrame} from "@react-three/fiber";
+import { useRef, useState, Suspense, useEffect } from 'react'
+import { useSpring, animated, config, easings } from '@react-spring/three';
+
+import {Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { Mesh } from "three";
 
@@ -15,35 +16,35 @@ import NavLink from './components/NavLink';
 
 
 //fibre component
-function Threefibre(){
-
-  const cubeRef = useRef();
+function Cube(){
+  const cube = useRef();
   const [active, setActive] = useState(false);
+  const {position} = useSpring({
 
-  // //for animation
-  useFrame(()=>{
-    if(!cubeRef.current){
-      return;
-    }
+    config: {
+      mass:1,
+      tension: 100
+    },
+    position: active ? [0,0,3]: [0,0,0]
 
-    cubeRef.current.rotation.x += 0.01;
-    cubeRef.current.rotation.y += 0.01;
-  });
+  })
 
-  return (
-    <mesh 
-      ref={cubeRef}
-      onClick={()=> setActive(!active)}  
+
+  return(
+    <animated.mesh 
+    ref={cube}
+    onClick={()=>setActive(!active)}
+    position={position}
+    rotation={[1,1,1]}
+
     >
-    
     <PerspectiveCamera />
     <boxGeometry args={[1.5,1.5,1.5]}/>
     <meshPhongMaterial color={active ? "purple" : "blue"} />
-    </mesh>
-  );
-};
+    </animated.mesh>
+  )
 
-
+}
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -57,7 +58,7 @@ function Home() {
       <directionalLight/>
       <ambientLight intensity={0.5}/>
       <pointLight position={[10, 10, 10]} intensity={3}/>
-      <Threefibre />
+      <Cube/>
 
       {/* <Suspense>
         <primitive 
