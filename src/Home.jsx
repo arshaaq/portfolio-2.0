@@ -4,6 +4,7 @@ import './styles/index.css'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { useRef, useState, Suspense, useEffect } from 'react'
 import { useSpring, animated, config, easings } from '@react-spring/three';
+import { Link } from 'react-router-dom';
 
 import {Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
