@@ -25,7 +25,7 @@ function Projects(){
 
 return(
   <>
-    <p><Link to="/" className="back-link">Back</Link></p>
+    <p><Link to="#" className="back-link">Back</Link></p>
     <div className="project-container">
       <ProjectItem/>
       <ProjectItem/>
