@@ -75,6 +75,7 @@ table {
   align-items: center;
   justify-content: center;
   position: relative;
+  animation-fill-mode: forwards;
 }
 
 * {
@@ -84,11 +85,29 @@ table {
 
 body {
   font-family: "Indie Flower", cursive;
+  height: 100vh;
 }
 
 .home-navigation {
+  display: grid;
+  grid-template-rows: 1, 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
   text-align: center;
   width: 100%;
+  height: 50px;
+  background-color: lightblue;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+}
+.home-navigation p {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-content {
@@ -106,5 +125,8 @@ body {
 }
 
 canvas {
-  height: 300px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-color: lightcoral;
 }/*# sourceMappingURL=index.css.map */

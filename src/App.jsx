@@ -4,8 +4,6 @@ import './styles/index.css'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { useRef, useState, Suspense, useEffect } from 'react'
 import { useSpring, animated, config, easings } from '@react-spring/three';
-import { Link } from 'react-router-dom';
-
 import {Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { Mesh } from "three";
@@ -13,7 +11,7 @@ import { Mesh } from "three";
 import gsap from 'gsap';
 
 //components
-import NavLink from './components/NavLink';
+
 
 
 //fibre component
@@ -30,6 +28,12 @@ function Cube(){
 
   })
 
+  //testing how to modify a 3d object from a dom element
+  useEffect(()=>{
+    document.getElementById("about").addEventListener("click", ()=>{
+      setActive(!active);
+    })
+  },[active])
 
   return(
     <animated.mesh 
@@ -37,9 +41,8 @@ function Cube(){
     onClick={()=>setActive(!active)}
     position={position}
     rotation={[1,1,1]}
-
     >
-    <PerspectiveCamera />
+    
     <boxGeometry args={[1.5,1.5,1.5]}/>
     <meshPhongMaterial color={active ? "purple" : "blue"} />
     </animated.mesh>
@@ -47,15 +50,25 @@ function Cube(){
 
 }
 
-function Home() {
+//component
+
+
+
+function App() {
   const [count, setCount] = useState(0)
   const gltf = useLoader(GLTFLoader, './3D_Models/scene.gltf');
 
   return (
-    <>
+  <>
+  <header>
+      <nav className='home-navigation'>
+        <p id='about'>about</p> 
+        <p id='projects'>projects</p>
+        <p id='contact'>contact</p>
+      </nav>
+  </header>
 
-
-    <Canvas>
+  <Canvas style={{ height: '100vh', width: '100%' }}>
       <directionalLight/>
       <ambientLight intensity={0.5}/>
       <pointLight position={[10, 10, 10]} intensity={3}/>
@@ -71,32 +84,17 @@ function Home() {
       </Suspense> */}
 
       
-    </Canvas>
-      
-     
+  </Canvas>
 
-      <header>
-        <nav className='home-navigation'>
-        <p><Link to="/about">about</Link></p>
-        <p><Link to="/projects">projects</Link></p>
-        <p><Link to="/contact">contact</Link></p>  
-        </nav>
-      </header>
+    <section className='home-content'>
 
-      <section className='home-content'>
-      <h1>Arshaaq Jiffry</h1>
 
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
+    </section>
+    
+  </>
+  
 
-        </p> 
-
-      </section>
-
-    </>
   )
 }
 
-export default Home;
+export default App;
