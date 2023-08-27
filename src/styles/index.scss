@@ -7,6 +7,11 @@
   text-rendering: optimizeLegibility;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 
 body{
   font-family: $main-font;
@@ -42,10 +47,21 @@ body{
     
 }
 
-.home-content{
- 
-  text-align: center;
-  height: 100%;
+#about{
+  background-color: lightgreen;
+}
+
+#projects{
+  background-color: lightpink;
+}
+
+#contact{
+  background-color: lightyellow;
+}
+
+.content-section{
+  position: relative;
+  height: 100vh;
 }
 
 .back-link{

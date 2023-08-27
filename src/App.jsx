@@ -1,3 +1,5 @@
+
+
 import './styles/index.css'
 
 
@@ -8,88 +10,96 @@ import {Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { Mesh } from "three";
 
-import gsap from 'gsap';
+//gsap
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+
+
 
 //components
 
 
 
 //fibre component
-function Cube(){
-  const cube = useRef();
-  const [active, setActive] = useState(false);
-  const {position} = useSpring({
 
-    config: {
-      mass:1,
-      tension: 100
-    },
-    position: active ? [0,0,3]: [0,0,0]
-
-  })
-
-  //testing how to modify a 3d object from a dom element
-  useEffect(()=>{
-    document.getElementById("about").addEventListener("click", ()=>{
-      setActive(!active);
-    })
-  },[active])
-
-  return(
-    <animated.mesh 
-    ref={cube}
-    onClick={()=>setActive(!active)}
-    position={position}
-    rotation={[1,1,1]}
-    >
-    
-    <boxGeometry args={[1.5,1.5,1.5]}/>
-    <meshPhongMaterial color={active ? "purple" : "blue"} />
-    </animated.mesh>
-  )
-
-}
 
 //component
+function About(){
 
+  return(
+    <section id='about' className='content-section'>
+        <div>lol</div>
+    </section>
+  )
+}
+
+function Projects(){
+
+  return(
+    <section id='projects' className='content-section'>
+        <div>lol</div>
+    </section>
+  )
+}
+
+function Contact(){
+
+  return(
+    <section id='contact' className='content-section poop'>
+        <div>lol</div>
+    </section>
+  )
+}
 
 
 function App() {
-  const [count, setCount] = useState(0)
-  const gltf = useLoader(GLTFLoader, './3D_Models/scene.gltf');
+  const container = useRef();
+
+  useEffect(()=>{
+
+    let contactSection = document.getElementById("contact");
+    let contactNav = document.getElementById("contact-nav");
+  
+    contactNav.addEventListener("click", () => {
+      contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    let aboutSection = document.getElementById("about");
+    let aboutNav = document.getElementById("about-nav");
+
+    aboutNav.addEventListener("click", () => {
+      aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    let projectsSection = document.getElementById("projects");
+    let projectsNav = document.getElementById("projects-nav");
+
+    projectsNav.addEventListener("click", () => {
+      projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  
+  },[])
+  
+
+
+
 
   return (
   <>
   <header>
       <nav className='home-navigation'>
-        <p id='about'>about</p> 
-        <p id='projects'>projects</p>
-        <p id='contact'>contact</p>
+        <p className='nav-item' id='about-nav' data-index="0">about</p> 
+        <p className='nav-item' id='projects-nav' data-index="1">projects</p>
+        <p className='nav-item' id='contact-nav' data-index="2">contact</p>
       </nav>
   </header>
 
-  <Canvas style={{ height: '100vh', width: '100%' }}>
-      <directionalLight/>
-      <ambientLight intensity={0.5}/>
-      <pointLight position={[10, 10, 10]} intensity={3}/>
-      <Cube/>
-
-      {/* <Suspense>
-        <primitive 
-        position={[1,0,3]}
-        onClick={(e)=> console.log('click')}
-        scale={[0.25, 0.25, 0.25]} 
-        object={gltf.scene} />
-        <pointLight color="#f6f3ea" position={[10, 5, 10]} intensity={2} />
-      </Suspense> */}
-
-      
-  </Canvas>
-
-    <section className='home-content'>
+  <About/>
+  <Projects/>
+  <Contact />
 
 
-    </section>
     
   </>
   
