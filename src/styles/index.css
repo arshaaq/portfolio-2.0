@@ -68,9 +68,10 @@ table {
 }
 
 .project-item {
-  background-color: lightpink;
+  background-color: lavender;
   width: 100%;
   height: 100%;
+  opacity: 0%;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,28 +1,30 @@
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
+
 import ProjectItem from "./ProjectItem";
 import { useEffect, useState, useRef } from 'react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 function Projects(){
-  const container = useRef();
-  const box = useRef();
+  const projects_container = useRef();
 
   useEffect(()=>{
 
     let containerContext = gsap.context(()=>{
-      gsap.to(".box", {
-        x: 200,
+      gsap.to(".project-item", {
+        y: -100,
+        opacity: 1,
         scrollTrigger: {
-          trigger: "#projects",
-          start: "top top",
+          trigger: projects_container.current,
+          start: "top center",
           end: "bottom center", 
-          scrub: true, 
-          markers: true
+          markers: true,
         },
+        stagger: 0.25,
       });
   
-    },container.current);
+    },projects_container.current);
+    //cleans up the animation
     return () => containerContext.revert(); 
   },[]);
   
@@ -31,15 +33,15 @@ function Projects(){
 return(
   <>
 
-    <div id='projects' className='content-section' ref={container}>
+    <div id='projects' className='content-section' ref={projects_container}>
 
-      <div className='box'>
-
+      <div className="project-container">
+        <ProjectItem/>
+        <ProjectItem/>
+        <ProjectItem/>
+        <ProjectItem/> 
       </div>
-      {/* <ProjectItem/>
-      <ProjectItem/>
-      <ProjectItem/>
-      <ProjectItem/> */}
+
     </div>
   
   </>
