@@ -4,84 +4,56 @@ import './styles/index.css'
 
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { useRef, useState, Suspense, useEffect } from 'react'
+import { useRef, useState, Suspense, useEffect, useLayoutEffect } from 'react'
 import { useSpring, animated, config, easings } from '@react-spring/three';
 import {Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { Mesh } from "three";
 
 //gsap
-import { gsap } from 'gsap';
+
+import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import ScrollToPlugin from 'gsap/ScrollToPlugin';
+gsap.registerPlugin(ScrollTrigger);
 
 
 
 //components
-
+import About from './components/About';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
 
 
 //fibre component
 
 
 //component
-function About(){
 
-  return(
-    <section id='about' className='content-section'>
-        <div>lol</div>
-    </section>
-  )
-}
-
-function Projects(){
-
-  return(
-    <section id='projects' className='content-section'>
-        <div>lol</div>
-    </section>
-  )
-}
-
-function Contact(){
-
-  return(
-    <section id='contact' className='content-section poop'>
-        <div>lol</div>
-    </section>
-  )
-}
 
 
 function App() {
+
   const container = useRef();
+  const sections = document.querySelectorAll(".content-section");
+  const navItems = document.querySelectorAll(".nav-item");
 
   useEffect(()=>{
 
-    let contactSection = document.getElementById("contact");
-    let contactNav = document.getElementById("contact-nav");
-  
-    contactNav.addEventListener("click", () => {
-      contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    let containerContext = gsap.context(()=>{
+      gsap.to(".box", {
+        x: 200,
+        scrollTrigger: {
+          trigger: "#project",
+          start: "top top", // Animation starts when the top of .box reaches the vertical center of the viewport
+          end: "bottom center", // Animation ends when the bottom of .box reaches the vertical center of the viewport
+          scrub: true, // Causes the animation to smoothly follow the scroll position
+          markers: true// Shows markers for debugging purposes
+        },
+      });
 
-    let aboutSection = document.getElementById("about");
-    let aboutNav = document.getElementById("about-nav");
-
-    aboutNav.addEventListener("click", () => {
-      aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-
-    let projectsSection = document.getElementById("projects");
-    let projectsNav = document.getElementById("projects-nav");
-
-    projectsNav.addEventListener("click", () => {
-      projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  
-  },[])
-  
-
+    },container.current);
+    return () => containerContext.revert(); 
+  },[]);
 
 
 
@@ -96,8 +68,8 @@ function App() {
   </header>
 
   <About/>
-  <Projects/>
-  <Contact />
+  <Projects reference={container}/>
+  <Contact/>
 
 
     
