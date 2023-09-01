@@ -42,13 +42,15 @@ function App() {
 
   return (
   <>
-  <header>
+  <header> 
       <nav className='home-navigation'>
         <p className='nav-item' id='about-nav' data-index="0">about</p> 
         <p className='nav-item' id='projects-nav' data-index="1">projects</p>
         <p className='nav-item' id='contact-nav' data-index="2">contact</p>
       </nav>
   </header>
+
+  test
 
   <About/>
   <Projects/>
