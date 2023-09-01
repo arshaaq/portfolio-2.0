@@ -18,7 +18,6 @@ function Projects(){
           trigger: projects_container.current,
           start: "top center",
           end: "bottom center", 
-          markers: true,
         },
         stagger: 0.25,
       });

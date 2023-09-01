@@ -108,12 +108,16 @@ body {
   text-align: center;
   width: 100%;
   height: 50px;
-  background-color: lightblue;
+  background-color: rgb(246, 253, 255);
   position: fixed;
   top: 0;
   z-index: 3;
 }
-.home-navigation p {
+
+.nav-item {
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  background-color: rgb(246, 253, 255);
   display: flex;
   width: 100%;
   height: 100%;
@@ -121,16 +125,21 @@ body {
   align-items: center;
 }
 
+.selectedNav {
+  background-color: rgb(0, 0, 0);
+  color: rgb(246, 253, 255);
+}
+
 #about {
-  background-color: lightgreen;
+  background-color: lightslategrey;
 }
 
 #projects {
-  background-color: lightpink;
+  background-color: rgb(92, 86, 87);
 }
 
 #contact {
-  background-color: lightyellow;
+  background-color: rgb(56, 56, 53);
 }
 
 .content-section {
