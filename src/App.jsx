@@ -14,6 +14,8 @@ import { Mesh } from "three";
 
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollToPlugin);
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
 
 
 
@@ -42,6 +44,40 @@ function App() {
 
   useEffect(()=>{
 
+    //--------------------------------------------GSAP-------------------------------------------------------//
+
+    let fullContainerContext = gsap.context(()=>{
+      const scrollTrigger = ScrollTrigger.create({
+            trigger: full_container.current,
+            start: "top center",
+            end: "bottom center", 
+            onUpdate: (self) => {
+              const progress = self.progress;
+
+              if(progress > 0 && progress <0.35){
+  
+                aboutNav.classList.add("selectedNav");
+                contactNav.classList.remove("selectedNav");
+                projectsNav.classList.remove("selectedNav")
+  
+              } else if(progress >= 0.35 && progress < 0.71){
+  
+                projectsNav.classList.add("selectedNav")
+                contactNav.classList.remove("selectedNav");
+                aboutNav.classList.remove("selectedNav");
+  
+              } else if(progress >= 0.71 && progress < 0.8){
+                
+                contactNav.classList.add("selectedNav");
+                aboutNav.classList.remove("selectedNav");
+                projectsNav.classList.remove("selectedNav")
+  
+              }
+            },
+        });
+    
+      },full_container.current);
+  
     let aboutSection = document.getElementById("about");
     let aboutNav = document.getElementById("about-nav");
   
@@ -51,56 +87,34 @@ function App() {
     let projectsSection = document.getElementById("projects");
     let projectsNav = document.getElementById("projects-nav");
 
+    //for about navigation
     aboutNav.addEventListener("click", () => {
-
-      aboutNav.classList.add("selectedNav");
-      contactNav.classList.remove("selectedNav");
-      projectsNav.classList.remove("selectedNav")
-
-      aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      gsap.to(window, {
+        duration: 0.1,
+        scrollTo: aboutSection,
+      });   
     });
 
+    //for contact navigation
     contactNav.addEventListener("click", () => {
-
-      contactNav.classList.add("selectedNav");
-      aboutNav.classList.remove("selectedNav");
-      projectsNav.classList.remove("selectedNav")
-
-      contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      gsap.to(window, {
+        duration: 0.1,
+        scrollTo: contactSection,
+      });   
     });
 
+    //for projects navigation
     projectsNav.addEventListener("click", () => {
-
-      projectsNav.classList.add("selectedNav")
-      contactNav.classList.remove("selectedNav");
-      aboutNav.classList.remove("selectedNav");
-     
-
-      projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      gsap.to(window, {
+        duration: 0.1,
+        scrollTo: projectsSection,
+      });   
     });
 
-//--------------------------------------------GSAP-------------------------------------------------------//
 
-    let fullContainerContext = gsap.context(()=>{
-    const scrollTrigger = ScrollTrigger.create({
-          trigger: full_container.current,
-          start: "top center",
-          end: "bottom center", 
-          markers: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            console.log('ScrollTrigger progress:', progress);
-          },
-      });
-  
-    },full_container.current);
-
-    
-
-
-    //cleans up the animation
-    return () => fullContainerContext.revert(); 
-    
+      //cleans up the animation
+      return () => fullContainerContext.revert(); 
+      
   },[])
 
 
@@ -117,7 +131,7 @@ function App() {
       </nav>
   </header>
 
-  <div ref={full_container}>
+  <div className="full_container" ref={full_container}>
   <About/>
   <Projects/>
   <Contact/>

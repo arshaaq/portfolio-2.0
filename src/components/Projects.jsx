@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
+
 function Projects(){
   const projects_container = useRef();
 

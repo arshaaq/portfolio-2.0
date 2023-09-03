@@ -1,6 +1,7 @@
 @import "./variables";
 @import "./base";
 @import "./projects";
+@import "./contactForm";
 
 *{
   font-family: $main-font;
@@ -9,6 +10,16 @@
 
 html {
   scroll-behavior: smooth;
+
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #000000;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
 }
 
 
@@ -17,7 +28,6 @@ body{
   font-family: $main-font;
   height: 100vh;
 }
-
 
 .home-navigation{
   display: grid;
@@ -32,15 +42,18 @@ body{
   height: 50px;
   background-color: rgb(246, 253, 255);
 
+  box-sizing: border-box;
+  border: 3px solid black;
+
   position: fixed;
   top: 0;
-  z-index: 3;    
+  z-index: 5;    
 }
 
 .nav-item{
   transition-property: background-color;
   transition-duration: 0.2s;
-  background-color: rgb(246, 253, 255);
+  background-color: whitesmoke;
 
   display: flex;
   width: 100%;
@@ -49,40 +62,36 @@ body{
   align-items: center;
 }
 
+.full_container{
+
+}
+
 .selectedNav{
   background-color: rgb(0, 0, 0);
   color: rgb(246, 253, 255);
 }
 
 #about{
-  background-color: lightslategrey;
+  background-color: rgb(57, 57, 57);
 }
 
 #projects{
-  background-color: rgb(92, 86, 87);
+  background-color: rgb(57, 57, 57);
 }
 
 #contact{
-  background-color: rgb(56, 56, 53);
+  background-color: rgb(57, 57, 57);
 }
 
 .content-section{
-  position: relative;
+
   height: 100vh;
 }
 
-.back-link{
-
-position: relative;
-top: 0px;
-left: 10px;
-
-font-size: 50px;
-text-decoration: none;
-
-
-background-color: red;
+form{
+  height: 100%;
 }
+
 
 canvas{
   margin: 0;
