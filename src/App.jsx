@@ -35,6 +35,7 @@ import Contact from './components/Contact';
 
 function App() {
   const full_container = useRef();
+  const [dataArray, setDataArray] = useState([]);
 
 
   const sections = document.querySelectorAll(".content-section");
@@ -117,7 +118,33 @@ function App() {
       
   },[])
 
+  useLayoutEffect(()=>{
+    
+// Define the API URL for the user data
+const apiUrl = `https://api.github.com/users/arshaaq/repos`;
+const token = `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`;
 
+// Make the API request with the access token
+fetch(apiUrl, {
+  headers: {
+    Authorization: `token ${token}`,
+  },
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then((userData) => {
+    // Handle and use the user data
+    console.log(userData);
+    setDataArray[userData];
+  })
+  .catch((error) => {
+    console.error('Error fetching GitHub user data:', error);
+  });
+  },[]);
 
 
   return (
@@ -133,7 +160,7 @@ function App() {
 
   <div className="full_container" ref={full_container}>
   <About/>
-  <Projects/>
+  <Projects data={dataArray}/>
   <Contact/>
   </div>
 

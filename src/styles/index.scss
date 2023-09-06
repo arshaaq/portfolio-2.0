@@ -18,7 +18,7 @@ html {
     background-color: #000000;
   }
   ::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
   }
 }
 
@@ -27,6 +27,7 @@ html {
 body{
   font-family: $main-font;
   height: 100vh;
+
 }
 
 .home-navigation{
@@ -72,15 +73,15 @@ body{
 }
 
 #about{
-  background-color: rgb(57, 57, 57);
+  background-color: rgb(255, 255, 255);
 }
 
 #projects{
-  background-color: rgb(57, 57, 57);
+  background-color: rgb(255, 255, 255);
 }
 
 #contact{
-  background-color: rgb(57, 57, 57);
+  background-color: rgb(255, 255, 255);
 }
 
 .content-section{
