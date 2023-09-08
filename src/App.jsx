@@ -41,11 +41,36 @@ function App() {
   const sections = document.querySelectorAll(".content-section");
   const navItems = document.querySelectorAll(".nav-item");
 
+  useLayoutEffect(()=>{
+    
+    // Define the API URL for the user data
+    const apiUrl = `https://api.github.com/users/arshaaq/repos`;
+    const token = `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`;
+    
+    // Make the API request with the access token
+    fetch(apiUrl, {
+      headers: {
+        Authorization: `token ${token}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((userData) => {
+        // Handle and use the user data
+        setDataArray(userData);
+        
+      })
+      .catch((error) => {
+        console.error('Error fetching GitHub user data:', error);
+      });
+      },[]);
 
 
   useEffect(()=>{
-
-    //--------------------------------------------GSAP-------------------------------------------------------//
 
     let fullContainerContext = gsap.context(()=>{
       const scrollTrigger = ScrollTrigger.create({
@@ -81,12 +106,15 @@ function App() {
   
     let aboutSection = document.getElementById("about");
     let aboutNav = document.getElementById("about-nav");
-  
+    console.log(aboutSection);
+      
     let contactSection = document.getElementById("contact");
     let contactNav = document.getElementById("contact-nav");
+    console.log(contactSection);
   
     let projectsSection = document.getElementById("projects");
     let projectsNav = document.getElementById("projects-nav");
+    console.log(projectsSection);
 
     //for about navigation
     aboutNav.addEventListener("click", () => {
@@ -116,36 +144,11 @@ function App() {
       //cleans up the animation
       return () => fullContainerContext.revert(); 
       
-  },[])
+  },[dataArray])
 
-  useLayoutEffect(()=>{
-    
-// Define the API URL for the user data
-const apiUrl = `https://api.github.com/users/arshaaq/repos`;
-const token = `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`;
 
-// Make the API request with the access token
-fetch(apiUrl, {
-  headers: {
-    Authorization: `token ${token}`,
-  },
-})
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then((userData) => {
-    // Handle and use the user data
-    console.log(userData);
-    setDataArray[userData];
-  })
-  .catch((error) => {
-    console.error('Error fetching GitHub user data:', error);
-  });
-  },[]);
 
+ 
 
   return (
   <>
