@@ -45,7 +45,7 @@ function App() {
     
     // Define the API URL for the user data
     const apiUrl = `https://api.github.com/users/arshaaq/repos`;
-    const token = `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`;
+    const token = `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`;
     
     // Make the API request with the access token
     fetch(apiUrl, {
@@ -106,15 +106,12 @@ function App() {
   
     let aboutSection = document.getElementById("about");
     let aboutNav = document.getElementById("about-nav");
-    console.log(aboutSection);
       
     let contactSection = document.getElementById("contact");
     let contactNav = document.getElementById("contact-nav");
-    console.log(contactSection);
   
     let projectsSection = document.getElementById("projects");
     let projectsNav = document.getElementById("projects-nav");
-    console.log(projectsSection);
 
     //for about navigation
     aboutNav.addEventListener("click", () => {

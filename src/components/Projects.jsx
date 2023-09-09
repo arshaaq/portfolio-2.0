@@ -6,15 +6,15 @@ function Projects({ data }) {
   console.log(data)
   const projects_container = useRef();
 
+
   useLayoutEffect(() => {
     if (!data || data.length === 0) {
-      // Data not available, do nothing or handle loading state
       return;
     }
 
     let containerContext = gsap.context(() => {
       gsap.to(".project-item", {
-        y: -100,
+        y: 0,
         opacity: 1,
         scrollTrigger: {
           trigger: projects_container.current,
@@ -30,17 +30,24 @@ function Projects({ data }) {
   }, [data]);
 
   const dataArrayElementsGeneral = data.map((item, index) => {
-    let baseUrl = `https://arshaaq.github.io/${item.name}/`;
-    return (
-      <ProjectItem
-        key={index}
-        name={item.name}
-        pagesURL={baseUrl}
-        sourceURL={item.svn_url}
-        description={item.description}
-        language={item.language}
-      />
-    );
+    if(item.name == "Advice-Generator" 
+    || item.name == "Pokedex-Johto" 
+    || item.name == "react-weather-app" 
+    || item.name == "javascript-game-2023"
+    || item.name == ""){
+      let baseUrl = `https://arshaaq.github.io/${item.name}/`;
+      return (
+        <ProjectItem
+          key={index}
+          name={item.name}
+          pagesURL={baseUrl}
+          sourceURL={item.svn_url}
+          description={item.description}
+          language={item.language}
+        />
+      );
+    }
+
   });
 
   return (
