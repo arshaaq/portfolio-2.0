@@ -5,6 +5,8 @@ const ProjectItem = ({ name, pagesURL, sourceURL, description}) => {
                     <p>{name}</p>
                 </div>
 
+                
+
                 <div className="data-item-description">
                     <p>{description}</p>
                 </div>

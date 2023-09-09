@@ -3,7 +3,6 @@ import { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Projects({ data }) {
-  console.log(data)
   const projects_container = useRef();
 
 

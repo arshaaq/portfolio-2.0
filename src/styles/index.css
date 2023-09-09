@@ -5,6 +5,7 @@
    License: none (public domain)
 */
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -60,34 +61,123 @@ table {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  min-height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .project-container {
   width: 90%;
   height: 90%;
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   gap: 10px;
 }
 
 .project-item {
-  transform: translateY(100px);
-  background-color: lavender;
-  opacity: 0%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
+  transform: translateY(100px);
+  background-color: white;
+  border: 3px solid black;
+  opacity: 0%;
+  max-width: 250px;
+  min-width: 250px;
+  min-height: 200px;
+  max-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  align-items: center;
+  justify-content: space-around;
   animation-fill-mode: forwards;
 }
+.project-item .data-item-name {
+  font-weight: 800;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.project-item .data-item-description {
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  flex-grow: 1;
+}
+.project-item .data-item-buttons {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+}
+.project-item .data-item-buttons .webpage {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: solid 1.5px black;
+  box-shadow: 3px 3px;
+  background-image: url(../assets/github_logo.png);
+  background-position: center;
+  background-size: 90%;
+  background-repeat: no-repeat;
+}
+.project-item .data-item-buttons .source-code {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: solid 1.5px black;
+  box-shadow: 3px 3px;
+  background-image: url(../assets/webpage_logo.png);
+  background-position: center;
+  background-size: 90%;
+  background-repeat: no-repeat;
+}
+.project-item .data-item-buttons .webpage:hover {
+  top: 3px;
+  left: 3px;
+  box-shadow: 0px 0px;
+}
+.project-item .data-item-buttons .source-code:hover {
+  top: 3px;
+  left: 3px;
+  box-shadow: 0px 0px;
+}
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1200px) {
   .project-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     gap: 10px; /* Increase gap for smaller screens */
+  }
+  .project-item {
+    position: relative;
+    max-width: 250px;
+    min-width: 250px;
+    min-height: 200px;
+    max-height: 250px;
+  }
+  .project-item .data-item-name {
+    font-weight: 800;
+  }
+  .project-item .data-item-description {
+    text-align: center;
+  }
+  .project-item .data-item-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  .project-item .data-item-buttons .webpage {
+    width: 30px;
+    height: 30px;
+  }
+  .project-item .data-item-buttons .source-code {
+    width: 30px;
+    height: 30px;
   }
 }
 .contact-form_container {
@@ -108,6 +198,7 @@ table {
   width: 100%;
 }
 .contact-form_container .email-container .email-header {
+  font-weight: 800;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -150,6 +241,7 @@ table {
   width: 8.5rem;
   align-self: center;
   box-shadow: 3px 3px;
+  background-color: white;
 }
 .contact-form_input .send-button:hover {
   top: 3px;
@@ -190,6 +282,70 @@ table {
   height: 1rem;
 }
 
+.content-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120vh;
+  min-width: 100%;
+}
+
+.about-container {
+  max-width: 70vw;
+  min-width: 70vw;
+  min-height: 250px;
+  max-height: 250px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.about-container .about-profile-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  border: solid 3px black;
+  background-color: white;
+}
+.about-container .about-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  background-color: white;
+  border: solid 3px black;
+}
+
+@media only screen and (max-width: 1200px) {
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .about-container .about-profile-picture {
+    max-width: 70vw;
+    min-width: 70vw;
+    max-height: 70vw;
+    min-height: 70vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    border-bottom: solid 3px black;
+  }
+  .about-container .about-description {
+    max-width: 70vw;
+    min-width: 70vw;
+    max-height: 80vw;
+    min-height: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 2;
+  }
+}
 * {
   font-family: "Indie Flower", cursive;
   text-rendering: optimizeLegibility;
