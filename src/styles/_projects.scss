@@ -28,11 +28,11 @@
     border: 3px solid black;
     opacity: 0%;
 
-    max-width: 250px;
-    min-width: 250px;
+    max-width: 25em;
+    min-width: 25em;
 
-    min-height: 200px;
-    max-height: 250px;
+    min-height: 25em;
+    max-height: 25em;
     
     display: flex;
     flex-direction: column;
@@ -45,6 +45,7 @@
 
     .data-item-name{
         font-weight: 800;
+        font-size: 20px;
         flex-grow: 1;
         display: flex;
         justify-content: center;
@@ -111,7 +112,7 @@
     }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1600px) {
     .project-container {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -130,6 +131,7 @@
     
         .data-item-name{
             font-weight: 800;
+            
         }
     
         .data-item-description{

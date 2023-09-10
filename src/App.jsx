@@ -45,7 +45,7 @@ function App() {
     
     // Define the API URL for the user data
     const apiUrl = `https://api.github.com/users/arshaaq/repos`;
-    const token = `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`;
+    const token = `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`;
     
     // Make the API request with the access token
     fetch(apiUrl, {
