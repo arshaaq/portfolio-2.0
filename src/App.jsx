@@ -42,26 +42,24 @@ function App() {
   const navItems = document.querySelectorAll(".nav-item");
 
   useLayoutEffect(()=>{
-    
-    // Define the API URL for the user data
-    const apiUrl = `https://api.github.com/users/arshaaq/repos`;
-    
     // Make the API request with the access token
-    fetch(apiUrl)
-      .then((response) => {
+    async function fetchData() {
+      try {
+        const response = await fetch('https://api.github.com/users/arshaaq/repos');
+        
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json();
-      })
-      .then((userData) => {
+    
+        const userData = await response.json();
         // Handle and use the user data
         setDataArray(userData);
-        
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error fetching GitHub user data:', error);
-      });
+      }
+    }
+    
+    fetchData();
       },[]);
 
 
