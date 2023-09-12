@@ -187,8 +187,8 @@ table {
   align-items: center;
 }
 .contact-form_container .email-box {
-  min-height: 100%;
-  min-width: 100%;
+  max-height: 20%;
+  min-width: 90%;
   align-self: center;
   justify-self: center;
   display: flex;
