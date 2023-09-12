@@ -45,14 +45,9 @@ function App() {
     
     // Define the API URL for the user data
     const apiUrl = `https://api.github.com/users/arshaaq/repos`;
-    const token = `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`;
     
     // Make the API request with the access token
-    fetch(apiUrl, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

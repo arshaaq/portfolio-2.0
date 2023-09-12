@@ -28,12 +28,10 @@
     border: 3px solid black;
     opacity: 0%;
 
-    max-width: 25em;
-    min-width: 25em;
+    width: 100%;
 
-    min-height: 25em;
-    max-height: 25em;
-    
+    height: 200%;
+
     display: flex;
     flex-direction: column;
     justify-self: center;
@@ -112,12 +110,13 @@
     }
 }
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1200px) {
     .project-container {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(1, 1fr);
-        gap: 10px; /* Increase gap for smaller screens */
+        gap:100px;
+        
       }
     
     .project-item{
@@ -131,7 +130,6 @@
     
         .data-item-name{
             font-weight: 800;
-            
         }
     
         .data-item-description{
