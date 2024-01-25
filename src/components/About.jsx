@@ -4,7 +4,7 @@ const About = ({reference}) => {
 
   useLayoutEffect(() => {
     const textElement = document.getElementById('typing-text');
-    const textToType = "lol this is a typing sentence";
+    const textToType = "Yo, I'm Arshaaq. A digital artist, coder and video editor. Living life with the philosophy of always learning and always creating. Nice to meet you!";
     console.log(textElement);
     let currentIndex = 0;
 
@@ -12,7 +12,7 @@ const About = ({reference}) => {
       if (currentIndex < textToType.length) {
         textElement.textContent += textToType.charAt(currentIndex);
         currentIndex++;
-        setTimeout(typeText, 50); // Adjust the typing speed (milliseconds)
+        setTimeout(typeText, 45); // Adjust the typing speed (milliseconds)
       }
     }
 

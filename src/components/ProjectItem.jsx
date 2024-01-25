@@ -12,13 +12,13 @@ const ProjectItem = ({ name, pagesURL, sourceURL, description}) => {
                 </div>
 
                 <div className="data-item-buttons">
-                    <a href={pagesURL} target="_blank" rel="noreferrer">
+                    <a href={sourceURL} target="_blank" rel="noreferrer">
                         <button className="webpage">
                             
                         </button>
                     </a>
 
-                    <a href={sourceURL} target="_blank" rel="noreferrer">
+                    <a href={pagesURL} target="_blank" rel="noreferrer">
                         <button className="source-code">
                             
                         </button>
