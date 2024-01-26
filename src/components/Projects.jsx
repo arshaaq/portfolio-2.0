@@ -29,10 +29,10 @@ function Projects({ data }) {
   }, [data]);
 
   const dataArrayElementsGeneral = data.map((item, index) => {
-    if(item.name == "Advice-Generator" 
-    || item.name == "Pokedex-Johto" 
+    if(item.name == "BrainNoodle" 
+    || item.name == "Rock-Paper-Scissors-Game" 
     || item.name == "react-weather-app" 
-    || item.name == "javascript-game-2023"
+    || item.name == "musical-memory-game"
     || item.name == ""){
       let baseUrl = `https://arshaaq.github.io/${item.name}/`;
       return (
