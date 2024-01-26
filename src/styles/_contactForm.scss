@@ -1,11 +1,21 @@
 @use "./variables";
 
+#contact{
+    
+    background-image: url('../assets/CONTACT_ME.png');
+    background-repeat: no-repeat;
+    background-position: bottom 50px left 90%;
+    background-size: auto;
+}   
+
 .contact-form_container{
     width: 100%; 
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+
 
     .email-box{
         max-height: 20%;
@@ -22,7 +32,7 @@
         justify-content: center;
         align-items: center;
         
-        width: 50rem;
+        width: 80rem;
 
         .email-header{
             font-weight: 800;
@@ -146,6 +156,13 @@
 
     @media only screen and (max-width: 1200px) {
 
+        #contact{
+    
+            background-image: url('../assets/CONTACT_ME.png');
+            background-repeat: no-repeat;
+            background-position: bottom 50px left 50%;
+            background-size: 50vw;
+        }  
 
 .contact-form_container{
         margin-top: 50px;

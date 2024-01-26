@@ -8,6 +8,11 @@
     min-height: 100vh;
     padding-top: 50px;
     padding-bottom: 50px;
+
+    background-image: url('../assets/PROJECTS.png');
+    background-repeat: no-repeat;
+    background-position: bottom 50px left 90%;
+    background-size: auto;
   }
 
 .project-container{
@@ -114,6 +119,14 @@
 }
 
 @media only screen and (max-width: 1200px) {
+
+    #projects{
+        background-image: url('../assets/PROJECTS.png');
+        background-repeat: no-repeat;
+        background-position: bottom 50px left 50%;
+        background-size: 50vw;
+    }
+
     .project-container {
         display: grid;
         grid-template-columns: repeat(1, 1fr);

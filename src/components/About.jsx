@@ -4,7 +4,7 @@ const About = ({reference}) => {
 
   useLayoutEffect(() => {
     const textElement = document.getElementById('typing-text');
-    const textToType = "Yo, I'm Arshaaq. A digital artist, coder and video editor. Living life with the philosophy of always learning and always creating. Nice to meet you!";
+    const textToType = "Yo, I'm Arshaaq. A digital artist, coder and video editor from Canada. Living life with the philosophy of always learning and always creating. Nice to meet you!";
     console.log(textElement);
     let currentIndex = 0;
 
@@ -22,7 +22,7 @@ const About = ({reference}) => {
     return(
       <section id='about' className='content-section'>
         <div className="about-container">
-          <div className="about-profile-picture">lol</div>
+          <div className="about-profile-picture"></div>
           <div className="about-description">
             <p id="typing-text"></p>
             </div>
